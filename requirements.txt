@@ -1,9 +1,15 @@
-pymupdf - Python library for reading PDF files programmatically.
-python-dotenv - Python library for loading environment variables from a .env file.
-langchain - A framework for building applications with language models.
-langchain-google-genai - A library for integrating Google Generative AI with LangChain.
-langchain-community - A collection of community-contributed tools and utilities for LangChain.
-chromadb - A library for working with ChromaDB, a vector database for machine learning applications.
-google-generativeai - A library for working with Google's Generative AI services.
-tiktoken - A library for tokening text for use with language models, particularly those from OpenAI.
+pymupdf
+python-dotenv
+langchain
+langchain-google-genai
+langchain-community
+langchain-huggingface
+langchain-text-splitters
+chromadb
+google-generativeai
+tiktoken
 sentence-transformers
+fastapi
+uvicorn
+python-multipart
+langchain-groq
