@@ -5,18 +5,29 @@ from langchain_community.vectorstores import Chroma
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 
+print("🚀 1. Starting rag.py initialization...")
+
 # ── 1. Load environment variables ──────────────────────────────────────────
+print("📁 2. Loading .env file...")
 load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+if not GROQ_API_KEY:
+    print("❌ 3. ERROR: GROQ_API_KEY not found in environment variables!")
+    # We raise an exception to stop the process, which will show in the logs
+    raise ValueError("GROQ_API_KEY is not set")
+else:
+    print("✅ 3. GROQ_API_KEY loaded successfully")
 
 # ── 2. Load the embedding model ────────────────────────────────────────────
-# Same model as ingestion — must match or retrieval breaks
-print("Loading embedding model...")
-embedding_model = HuggingFaceEmbeddings(
-    model_name="all-MiniLM-L6-v2"
-)
+print("🧠 4. Loading embedding model (all-MiniLM-L6-v2)...")
+try:
+    embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    print("✅ 5. Embedding model loaded")
+except Exception as e:
+    print(f"❌ 5. Failed to load embedding model: {e}")
+    raise
 
-# ── 3. Connect to the existing ChromaDB vector store ───────────────────────
+# ── 3. Connect to ChromaDB ─────────────────────────────────────────────────
 # Loading existing DB, not recreating it
 print("Connecting to ChromaDB...")
 vectorstore = Chroma(
