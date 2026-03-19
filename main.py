@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from .rag import ask
+from src.rag import ask
 
 #Initialize the FastAPI app
 app = FastAPI(
